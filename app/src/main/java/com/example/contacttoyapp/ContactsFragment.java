@@ -84,7 +84,22 @@ public class ContactsFragment extends Fragment implements
     private static final String SELECTION =
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ?
                     ContactsContract.Contacts.DISPLAY_NAME_PRIMARY + " LIKE ?" :
-                    ContactsContract.Contacts.DISPLAY_NAME + " LIKE ?";
+                    ContactsContract.Contacts.DISPLAY_NAME + " LIKE ?" +
+            /*
+             * Searches for an email address
+             * that matches the search string
+             */
+            ContactsContract.CommonDataKinds.Email.ADDRESS + " LIKE ? " + "AND " +
+            /*
+             * Searches for a MIME type that matches
+             * the value of the constant
+             * Email.CONTENT_ITEM_TYPE. Note the
+             * single quotes surrounding Email.CONTENT_ITEM_TYPE.
+             */
+            ContactsContract.Data.MIMETYPE + " = '" +
+            ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE + "'";
+
+
     // Defines a variable for the search string
     private String searchString;
     // Defines the array to hold values that replace the ?
