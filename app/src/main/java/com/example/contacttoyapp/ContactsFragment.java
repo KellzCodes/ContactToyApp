@@ -55,6 +55,14 @@ public class ContactsFragment extends Fragment implements
     // An adapter that binds the result Cursor to the ListView
     private SimpleCursorAdapter cursorAdapter;
 
+    private static final String[] PROJECTION = {
+            ContactsContract.Contacts._ID,
+            ContactsContract.Contacts.LOOKUP_KEY,
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ?
+                    ContactsContract.Contacts.DISPLAY_NAME_PRIMARY :
+                    ContactsContract.Contacts.DISPLAY_NAME
+    };
+
     // Empty public constructor, required by the system
     public ContactsFragment() {}
 
