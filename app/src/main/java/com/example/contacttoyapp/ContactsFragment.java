@@ -55,6 +55,7 @@ public class ContactsFragment extends Fragment implements
     // An adapter that binds the result Cursor to the ListView
     private SimpleCursorAdapter cursorAdapter;
 
+    @SuppressLint("InlinedApi")
     private static final String[] PROJECTION = {
             ContactsContract.Contacts._ID,
             ContactsContract.Contacts.LOOKUP_KEY,
@@ -62,6 +63,11 @@ public class ContactsFragment extends Fragment implements
                     ContactsContract.Contacts.DISPLAY_NAME_PRIMARY :
                     ContactsContract.Contacts.DISPLAY_NAME
     };
+
+    // The column index for the _ID column
+    private static final int CONTACT_ID_INDEX = 0;
+    // The column index for the CONTACT_KEY column
+    private static final int CONTACT_KEY_INDEX = 1;
 
     // Empty public constructor, required by the system
     public ContactsFragment() {}
