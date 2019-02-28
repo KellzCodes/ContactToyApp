@@ -22,4 +22,17 @@ public class DetailsFragment {
             ContactsContract.Data.DATA14,
             ContactsContract.Data.DATA15
     };
+
+    // Defines the selection clause
+    private static final String SELECTION = ContactsContract.Data.LOOKUP_KEY + " = ?";
+
+    // Defines the array to hold the search criteria
+    private String[] selectionArgs = { "" };
+    /*
+     * Defines a variable to contain the selection value. Once you
+     * have the Cursor from the Contacts table, and you've selected
+     * the desired row, move the row's LOOKUP_KEY value into this
+     * variable.
+     */
+    private String lookupKey;
 }
