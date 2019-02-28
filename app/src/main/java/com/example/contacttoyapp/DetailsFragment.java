@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 
 public class DetailsFragment extends Fragment implements
@@ -50,7 +51,7 @@ public class DetailsFragment extends Fragment implements
     private static final String SORT_ORDER = ContactsContract.Data.MIMETYPE;
 
     // Defines a constant that identifies the loader
-    static int DETAILS_QUERY_ID = 0;
+    static final int DETAILS_QUERY_ID = 0;
 
     /*
      * Invoked when the parent Activity is instantiated
@@ -66,8 +67,25 @@ public class DetailsFragment extends Fragment implements
 
     @NonNull
     @Override
-    public Loader<Cursor> onCreateLoader(int i, @Nullable Bundle bundle) {
-        return null;
+    public Loader<Cursor> onCreateLoader(int loaderId, @Nullable Bundle bundle) {
+        CursorLoader mLoader = null;
+        switch (loaderId) {
+            case DETAILS_QUERY_ID:
+                // Assigns the selection parameter
+                selectionArgs[0] = lookupKey;
+                // Starts the query
+                mLoader =
+                        new CursorLoader(
+                                getActivity(),
+                                ContactsContract.Data.CONTENT_URI,
+                                PROJECTION,
+                                SELECTION,
+                                selectionArgs,
+                                SORT_ORDER
+                        );
+        }
+
+        return mLoader;
     }
 
     @Override
