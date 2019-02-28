@@ -60,9 +60,18 @@ public class ContactsFragment extends Fragment implements
     private static final String[] PROJECTION = {
             ContactsContract.Contacts._ID,
             ContactsContract.Contacts.LOOKUP_KEY,
+            /*
+             * The detail data row ID. To make a ListView work,
+             * this column is required.
+             */
+            ContactsContract.Data._ID,
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ?
                     ContactsContract.Contacts.DISPLAY_NAME_PRIMARY :
-                    ContactsContract.Contacts.DISPLAY_NAME
+                    ContactsContract.Contacts.DISPLAY_NAME,
+            // The contact's _ID, to construct a content URI
+            ContactsContract.Data.CONTACT_ID,
+            // The contact's LOOKUP_KEY, to construct a content URI
+            ContactsContract.Data.LOOKUP_KEY // A permanent link to the contact
     };
 
     // The column index for the _ID column
