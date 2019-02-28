@@ -147,12 +147,14 @@ public class ContactsFragment extends Fragment implements
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
-
+        // Put the result Cursor in the adapter for the ListView
+        cursorAdapter.swapCursor(cursor);
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-
+        // Delete the reference to the existing Cursor
+        cursorAdapter.swapCursor(null);
     }
 
     @Override
