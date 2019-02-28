@@ -126,6 +126,12 @@ public class ContactsFragment extends Fragment implements
         /*
          * Makes search string into pattern and
          * stores it in the selection array
+         *
+         * To make a string into a pattern, insert "%" (percent) characters to
+         * represent a sequence of zero or more characters, or "_" (underscore)
+         * characters to represent a single character, or both. For example,
+         * the pattern "%Jefferson%" would match both "Thomas Jefferson" and
+         * "Jefferson Davis".
          */
         selectionArgs[0] = "%" + searchString + "%";
         // Starts the query
