@@ -13,7 +13,9 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -52,6 +54,18 @@ public class ContactsFragment extends Fragment implements
     Uri contactUri;
     // An adapter that binds the result Cursor to the ListView
     private SimpleCursorAdapter cursorAdapter;
+
+    // Empty public constructor, required by the system
+    public ContactsFragment() {}
+
+    // A UI Fragment must inflate its View
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the fragment layout
+        return inflater.inflate(R.layout.contact_list_view,
+                container, false);
+    }
 
     @NonNull
     @Override
