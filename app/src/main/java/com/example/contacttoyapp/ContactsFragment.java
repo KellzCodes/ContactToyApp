@@ -67,6 +67,24 @@ public class ContactsFragment extends Fragment implements
                 container, false);
     }
 
+    @SuppressLint("ResourceType")
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        // Gets the ListView from the View list of the parent activity
+        contactsList =
+                (ListView) getActivity().findViewById(R.layout.contact_list_view);
+        // Gets a CursorAdapter
+        cursorAdapter = new SimpleCursorAdapter(
+                getActivity(),
+                R.layout.contact_list_item,
+                null,
+                FROM_COLUMNS, TO_IDS,
+                0);
+        // Sets the adapter for the ListView
+        contactsList.setAdapter(cursorAdapter);
+    }
+
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int i, @Nullable Bundle bundle) {
