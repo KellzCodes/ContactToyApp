@@ -35,4 +35,9 @@ public class DetailsFragment {
      * variable.
      */
     private String lookupKey;
+
+    /*
+     * Defines a string that specifies a sort order of MIME type
+     */
+    private static final String SORT_ORDER = ContactsContract.Data.MIMETYPE;
 }
