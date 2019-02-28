@@ -157,7 +157,8 @@ public class ContactsFragment extends Fragment implements
          * the pattern "%Jefferson%" would match both "Thomas Jefferson" and
          * "Jefferson Davis".
          */
-        selectionArgs[0] = "%" + searchString + "%";
+        searchString = "%" + searchString + "%";
+        selectionArgs[0] = searchString;
         // Starts the query
         return new CursorLoader(
                 getActivity(),
