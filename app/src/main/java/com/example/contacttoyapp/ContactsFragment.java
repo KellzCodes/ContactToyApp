@@ -92,10 +92,13 @@ public class ContactsFragment extends Fragment implements
                 container, false);
     }
 
+    // Called just before the Fragment displays its UI
     @SuppressLint("ResourceType")
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        // Always call the super method first
         super.onActivityCreated(savedInstanceState);
+
         // Gets the ListView from the View list of the parent activity
         contactsList =
                 (ListView) getActivity().findViewById(R.layout.contact_list_fragment);
@@ -111,6 +114,9 @@ public class ContactsFragment extends Fragment implements
 
         // Set the item click listener to be the current fragment.
         contactsList.setOnItemClickListener(this);
+
+        // Initializes the loader
+        getLoaderManager().initLoader(0, null, this);
     }
 
     @NonNull
