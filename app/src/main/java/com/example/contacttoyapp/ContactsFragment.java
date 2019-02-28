@@ -148,24 +148,20 @@ public class ContactsFragment extends Fragment implements
     @Override
     public Loader<Cursor> onCreateLoader(int i, @Nullable Bundle bundle) {
         /*
-         * Makes search string into pattern and
-         * stores it in the selection array
-         *
-         * To make a string into a pattern, insert "%" (percent) characters to
-         * represent a sequence of zero or more characters, or "_" (underscore)
-         * characters to represent a single character, or both. For example,
-         * the pattern "%Jefferson%" would match both "Thomas Jefferson" and
-         * "Jefferson Davis".
+         * Appends the search string to the base URI. Always
+         * encode search strings to ensure they're in proper
+         * format.
          */
-        searchString = "%" + searchString + "%";
-        selectionArgs[0] = searchString;
+        Uri contentUri = Uri.withAppendedPath(
+                ContactsContract.Contacts.CONTENT_FILTER_URI,
+                Uri.encode(searchString));
         // Starts the query
         return new CursorLoader(
                 getActivity(),
-                ContactsContract.Contacts.CONTENT_URI,
+                contentUri,
                 PROJECTION,
-                SELECTION,
-                selectionArgs,
+                null,
+                null,
                 null
         );
     }
