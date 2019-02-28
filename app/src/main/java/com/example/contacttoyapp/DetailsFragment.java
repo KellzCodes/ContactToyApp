@@ -12,6 +12,7 @@ import android.support.v4.content.Loader;
 
 public class DetailsFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<Cursor>{
+
     private static final String[] PROJECTION = {
             ContactsContract.CommonDataKinds.Email._ID,
             ContactsContract.CommonDataKinds.Email.ADDRESS,
@@ -39,10 +40,7 @@ public class DetailsFragment extends Fragment implements
      */
     private String lookupKey;
 
-    /*
-     * Defines a string that specifies a sort order of MIME type
-     */
-    private static final String SORT_ORDER = ContactsContract.Data.MIMETYPE;
+    private static final String SORT_ORDER = ContactsContract.CommonDataKinds.Email.TYPE + " ASC ";
 
     // Defines a constant that identifies the loader
     static final int DETAILS_QUERY_ID = 0;
