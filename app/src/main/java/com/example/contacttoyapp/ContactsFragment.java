@@ -69,6 +69,17 @@ public class ContactsFragment extends Fragment implements
     // The column index for the CONTACT_KEY column
     private static final int CONTACT_KEY_INDEX = 1;
 
+    // Defines the text expression
+    @SuppressLint("InlinedApi")
+    private static final String SELECTION =
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ?
+                    ContactsContract.Contacts.DISPLAY_NAME_PRIMARY + " LIKE ?" :
+                    ContactsContract.Contacts.DISPLAY_NAME + " LIKE ?";
+    // Defines a variable for the search string
+    private String searchString;
+    // Defines the array to hold values that replace the ?
+    private String[] selectionArgs = { searchString };
+
     // Empty public constructor, required by the system
     public ContactsFragment() {}
 
