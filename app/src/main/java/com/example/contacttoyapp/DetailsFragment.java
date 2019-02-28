@@ -19,11 +19,18 @@ public class DetailsFragment extends Fragment implements
             ContactsContract.CommonDataKinds.Email.LABEL
     };
 
-    // Defines the selection clause
-    private static final String SELECTION = ContactsContract.Data.LOOKUP_KEY + " = ?";
-
+    /*
+     * Defines the selection clause. Search for a lookup key
+     * and the Email MIME type
+     */
+    private static final String SELECTION =
+            ContactsContract.Data.LOOKUP_KEY + " = ?" +
+                    " AND " +
+                    ContactsContract.Data.MIMETYPE + " = " +
+                    "'" + ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE + "'";
     // Defines the array to hold the search criteria
     private String[] selectionArgs = { "" };
+
     /*
      * Defines a variable to contain the selection value. Once you
      * have the Cursor from the Contacts table, and you've selected
