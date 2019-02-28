@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
@@ -122,7 +123,20 @@ public class ContactsFragment extends Fragment implements
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int i, @Nullable Bundle bundle) {
-        return null;
+        /*
+         * Makes search string into pattern and
+         * stores it in the selection array
+         */
+        selectionArgs[0] = "%" + searchString + "%";
+        // Starts the query
+        return new CursorLoader(
+                getActivity(),
+                ContactsContract.Contacts.CONTENT_URI,
+                PROJECTION,
+                SELECTION,
+                selectionArgs,
+                null
+        );
     }
 
     @Override
