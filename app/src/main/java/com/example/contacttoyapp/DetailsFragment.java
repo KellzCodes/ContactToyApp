@@ -1,8 +1,16 @@
 package com.example.contacttoyapp;
 
+import android.database.Cursor;
+import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 
-public class DetailsFragment {
+public class DetailsFragment extends Fragment implements
+        LoaderManager.LoaderCallbacks<Cursor>{
     private static final String[] PROJECTION = {
             ContactsContract.Data._ID,
             ContactsContract.Data.MIMETYPE,
@@ -40,4 +48,35 @@ public class DetailsFragment {
      * Defines a string that specifies a sort order of MIME type
      */
     private static final String SORT_ORDER = ContactsContract.Data.MIMETYPE;
+
+    // Defines a constant that identifies the loader
+    static int DETAILS_QUERY_ID = 0;
+
+    /*
+     * Invoked when the parent Activity is instantiated
+     * and the Fragment's UI is ready. Put final initialization
+     * steps here.
+     */
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        // Initializes the loader framework
+        getLoaderManager().initLoader(DETAILS_QUERY_ID, null, this);
+    }
+
+    @NonNull
+    @Override
+    public Loader<Cursor> onCreateLoader(int i, @Nullable Bundle bundle) {
+        return null;
+    }
+
+    @Override
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
+
+    }
+
+    @Override
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
+
+    }
 }
