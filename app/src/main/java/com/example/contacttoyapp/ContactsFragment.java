@@ -73,7 +73,7 @@ public class ContactsFragment extends Fragment implements
         super.onActivityCreated(savedInstanceState);
         // Gets the ListView from the View list of the parent activity
         contactsList =
-                (ListView) getActivity().findViewById(R.layout.contact_list_view);
+                (ListView) getActivity().findViewById(R.layout.contact_list_fragment);
         // Gets a CursorAdapter
         cursorAdapter = new SimpleCursorAdapter(
                 getActivity(),
@@ -83,6 +83,9 @@ public class ContactsFragment extends Fragment implements
                 0);
         // Sets the adapter for the ListView
         contactsList.setAdapter(cursorAdapter);
+
+        // Set the item click listener to be the current fragment.
+        contactsList.setOnItemClickListener(this);
     }
 
     @NonNull
