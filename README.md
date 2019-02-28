@@ -15,17 +15,15 @@ Retrieve a list of contacts by matching the search string to any type of detail 
 #### This app uses a [Cursor Loader](https://developer.android.com/reference/android/support/v4/content/CursorLoader.html) to retrieve data from the Contacts Provider. A CursorLoader runs its on a thread that's separate from the UI thread. This ensures that the query doesn't slow down UI response times and cause a poor user experience. For more information, see the Android training class [Loading Data in the Background](https://developer.android.com/training/load-data-background/index.html).
 
 ## Steps for Retrieving a List of Contacts
-Request Permission to Read the Provider.
-Define ListView and item layouts.
-Define a Fragment that displays the list of contacts.
-Define global variables.
-Initialize the Fragment.
-Set up the CursorAdapter for the ListView.
-Set the selected contact listener.
-Define a projection.
-Define constants for the Cursor column indexes.
-For this type of retrieval, you're using the same table you used in the section Match a contact by name and list the results. Use the same column indexes as well.
-
-Define the onItemClick() method.
-Initialize the loader.
-Implement onLoadFinished() and onLoaderReset().
+- Request Permission to Read the Provider.
+ - Define ListView and item layouts.
+- Define a Fragment that displays the list of contacts.
+- Define global variables.
+- Initialize the Fragment.
+- Set up the CursorAdapter for the ListView.
+- Set the selected contact listener.
+- Define a projection.
+- Define constants for the Cursor column indexes. For this type of retrieval, you're using the same table you used in the section Match a contact by name and list the results. Use the same column indexes as well.
+- Define the onItemClick() method.
+- Initialize the loader.
+- Implement onLoadFinished() and onLoaderReset().
