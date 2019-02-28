@@ -130,7 +130,22 @@ public class ContactsFragment extends Fragment implements
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+    public void onItemClick(AdapterView<?> parent, View item, int position, long rowId) {
+        // Get the cursor adapter
+        SimpleCursorAdapter simpleCursorAdapter = (SimpleCursorAdapter) parent.getAdapter();
+        // Get the Cursor
+        Cursor cursor = simpleCursorAdapter.getCursor();
+        // Move to the selected contact
+        cursor.moveToPosition(position);
+        // Get the _ID value
+        contactId = cursor.getLong(CONTACT_ID_INDEX);
+        // Get the selected LOOKUP KEY
+        contactKey = cursor.getString(CONTACT_KEY_INDEX);
+        // Create the contact's content Uri
+        contactUri = ContactsContract.Contacts.getLookupUri(contactId, contactKey);
+        /*
+         * You can use contactUri as the content URI for retrieving
+         * the details for a contact.
+         */
     }
 }
