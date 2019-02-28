@@ -90,11 +90,25 @@ public class DetailsFragment extends Fragment implements
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
-
+        switch (loader.getId()) {
+            case DETAILS_QUERY_ID:
+                /*
+                 * Process the resulting Cursor here.
+                 */
+                break;
+        }
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
+        switch (loader.getId()) {
+            case DETAILS_QUERY_ID:
+                /*
+                 * If you have current references to the Cursor,
+                 * remove them here.
+                 */
+                break;
+        }
 
     }
 }
